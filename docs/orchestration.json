@@ -1,0 +1,32 @@
+{
+  "project": "gitbriefcase",
+  "owner": "rogerchappel",
+  "repo": "gitbriefcase",
+  "defaultBranch": "main",
+  "status": "mvp-complete",
+  "sourceOfTruth": "docs/PRD.md",
+  "verification": [
+    "npm test",
+    "npm run check",
+    "npm run build",
+    "npm run smoke",
+    "bash scripts/validate.sh",
+    "node dist/cli.js pack tests/fixtures/sample-repo --output /tmp/gitbriefcase-smoke --format dir --force",
+    "node dist/cli.js inspect /tmp/gitbriefcase-smoke"
+  ],
+  "commands": {
+    "pack": "gitbriefcase pack <path> [--output bundle] [--format dir|tgz]",
+    "inspect": "gitbriefcase inspect <bundle>"
+  },
+  "artifacts": [
+    "manifest.json",
+    "SUMMARY.md",
+    "files/"
+  ],
+  "safetyDefaults": {
+    "localFirst": true,
+    "telemetry": false,
+    "redaction": "best-effort common secret patterns",
+    "defaultDeny": [".git", "node_modules", ".env*", "dist", "coverage", "*.log"]
+  }
+}
