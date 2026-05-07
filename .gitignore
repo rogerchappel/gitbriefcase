@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+*.log
+*.briefcase/
+*.tar.gz
+*.tgz
+.DS_Store
