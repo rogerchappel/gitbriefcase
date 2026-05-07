@@ -4,7 +4,7 @@
   "description": "Pack deterministic, redacted repository handoff bundles for agents and maintainers.",
   "type": "module",
   "bin": {
-    "gitbriefcase": "./dist/cli.js"
+    "gitbriefcase": "./dist/src/cli.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

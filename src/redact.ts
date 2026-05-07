@@ -14,7 +14,7 @@ const PATTERNS: RedactionPattern[] = [
   },
   {
     name: "token-assignment",
-    regex: /\b([A-Z0-9_]*(?:TOKEN|SECRET|PASSWORD|PASSWD|API[_-]?KEY|ACCESS[_-]?KEY)[A-Z0-9_]*\s*[=:]\s*)([^\s#'\"]{8,}|['\"][^'\"]{8,}['\"])/giu,
+    regex: /\b([A-Z0-9_]*(?:TOKEN|SECRET|PASSWORD|PASSWD|API[_-]?KEY|ACCESS[_-]?KEY)[A-Z0-9_]*\s*[=:]\s*)([^\s#'"]{8,}|['"][^'"]{8,}['"])/giu,
     replacement: (_match, prefix: string) => `${prefix}[REDACTED:secret]`
   },
   {

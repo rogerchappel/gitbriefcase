@@ -10,7 +10,7 @@ test("walkRepository skips default deny and gitignored paths", async () => {
   const result = await walkRepository(fixture, { includeGitIgnored: false });
   const files = result.files.map((file) => relativePosix(fixture, file));
 
-  assert.deepEqual(files, [".gitignore", "README.md", "config.txt", "package.json", "src/index.js"]);
+  assert.deepEqual(files, [".gitignore", "assets/blob.bin", "config.txt", "package.json", "README.md", "src/index.js"]);
   assert.ok(result.skipped.some((file) => file.path === ".env" && file.reason === "default-deny"));
   assert.ok(result.skipped.some((file) => file.path === "ignored.txt" && file.reason === "gitignore"));
   assert.ok(result.skipped.some((file) => file.path === "node_modules" && file.reason === "directory"));

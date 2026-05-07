@@ -10,9 +10,9 @@ cleanup() {
 }
 trap cleanup EXIT
 
-node dist/cli.js --version >/dev/null
-node dist/cli.js pack tests/fixtures/sample-repo --output "$workdir/sample.bundle" --format dir --force
-node dist/cli.js inspect "$workdir/sample.bundle"
+node dist/src/cli.js --version >/dev/null
+node dist/src/cli.js pack tests/fixtures/sample-repo --output "$workdir/sample.bundle" --format dir --force
+node dist/src/cli.js inspect "$workdir/sample.bundle"
 
 test -f "$workdir/sample.bundle/manifest.json"
 test -f "$workdir/sample.bundle/SUMMARY.md"
