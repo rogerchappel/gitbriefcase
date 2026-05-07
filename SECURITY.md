@@ -2,57 +2,45 @@
 
 ## Supported Versions
 
-Replace this section with the supported versions for `gitbriefcase`.
+`gitbriefcase` is pre-1.0. Security fixes are provided on the latest published version when maintainer capacity allows.
 
-Example:
-
-```md
 | Version | Supported |
 | --- | --- |
-| .x | Yes |
-| < .0 | No |
-```
-
-If the project does not publish versioned releases yet, say that clearly.
+| 0.x latest | Best effort |
+| Older 0.x | No |
 
 ## Reporting a Vulnerability
 
-Please do not report suspected vulnerabilities in public issues, pull requests, or discussions.
+Please do not report suspected vulnerabilities in public issues, pull requests, discussions, or shared bundles.
 
-Ask maintainers for the private security reporting path before sharing details.
+Use GitHub private vulnerability reporting for `rogerchappel/gitbriefcase` when available. If it is not available, open a public issue asking for a private reporting path without including exploit details, secrets, personal data, or sensitive technical details.
 
-If no private reporting path exists yet, ask maintainers through public project channels for a private reporting path. Do not include exploit details, secrets, personal data, or sensitive technical details in public messages.
+## Bundle Safety Expectations
 
-## What to Include
+`gitbriefcase` is designed to reduce accidental leakage, not to guarantee that a bundle is secret-free.
 
-When a private reporting path is available, include:
+Before sharing a bundle:
 
-- A clear description of the issue.
-- Affected versions, files, packages, workflows, or configuration.
-- Steps to reproduce, proof of concept, or attack scenario when safe to share.
-- Potential impact.
-- Suggested mitigation, if known.
+1. Run `gitbriefcase inspect <bundle>`.
+2. Review `SUMMARY.md`.
+3. Review `manifest.json` redaction and skipped-path sections.
+4. Spot-check copied files under `files/` when the bundle leaves your machine or organization.
 
-## Response Expectations
+## In Scope
 
-Maintainers review good-faith reports as capacity allows.
+- Redaction bypasses for supported best-effort patterns.
+- Unsafe default inclusion of sensitive local files.
+- Bundle inspection accepting tampered files as valid.
+- CLI behavior that unexpectedly writes outside the requested output path.
+- CI, packaging, or release configuration maintained in this repository.
 
-Do not imply paid support, guaranteed response times, guaranteed fixes, or service-level agreements unless `gitbriefcase` explicitly provides them.
-
-## Scope
-
-In scope:
-
-- Vulnerabilities in gitbriefcase.
-- Insecure default configuration shipped by this project.
-- CI, release, or dependency guidance maintained by this project.
-
-Out of scope:
+## Out of Scope
 
 - General support requests.
-- Requests for guaranteed maintenance timelines.
-- Issues in unrelated downstream projects.
+- Claims that require perfect secret scanning.
+- Secrets manually forced into a bundle after generation.
+- Downstream tools or services that consume generated bundles.
 
 ## Disclosure
 
-Coordinate disclosure with maintainers before publishing vulnerability details.
+Coordinate public disclosure with maintainers. Good-faith reports are appreciated, and maintainers will prioritize practical fixes that improve safe local-first bundle generation.
