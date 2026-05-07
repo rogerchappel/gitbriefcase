@@ -2,50 +2,66 @@
 
 Thanks for helping improve `gitbriefcase`.
 
-This project values small, reviewable contributions with clear verification.
+This project values small, reviewable contributions with clear verification and safe defaults.
 
-## Issues
+## Development Setup
 
-Before opening an issue:
+```sh
+git clone https://github.com/rogerchappel/gitbriefcase.git
+cd gitbriefcase
+npm install
+npm test
+```
 
-- Search existing issues.
-- Confirm the issue applies to `gitbriefcase`.
-- Include enough context for maintainers to understand or reproduce the request.
+## Project Shape
 
-Bug reports should include:
-
-- What happened.
-- What you expected.
-- Steps to reproduce.
-- Relevant logs, screenshots, or files.
-- The smallest verification step that demonstrates the issue.
-
-Feature requests should include:
-
-- The use case.
-- Why the current project does not solve it.
-- Risks or compatibility concerns.
-- Suggested files or behavior that may need to change.
+- `src/cli.ts` — command-line entrypoint.
+- `src/pack.ts` — bundle generation.
+- `src/inspect.ts` — manifest and checksum validation.
+- `src/redact.ts` — best-effort redaction rules.
+- `tests/fixtures/` — sample repos and broken bundles.
+- `docs/PRD.md` — product source of truth.
 
 ## Pull Requests
 
 Pull requests should:
 
 - Focus on one reviewable intent.
-- Use a branch.
 - Follow Conventional Commits.
-- Include tests or verification appropriate to the change.
-- Update documentation when behavior or usage changes.
-- Avoid unrelated formatting or dependency churn.
-- Avoid secrets, private contact details, and project-specific sensitive information.
+- Include tests or a clear reason tests are not applicable.
+- Update documentation when behavior changes.
+- Avoid unrelated formatting, dependency churn, or generated artifacts.
+- Avoid committing secrets or private repository bundles.
+
+## Verification
+
+Run the smallest useful check while developing, then the full gate before review:
+
+```sh
+npm test
+npm run check
+npm run build
+npm run smoke
+bash scripts/validate.sh
+```
+
+If a command cannot be run, explain why and include the exact command a maintainer should run.
+
+## Redaction Changes
+
+Redaction rules must be conservative and explainable. New rules should include:
+
+- A targeted fixture or unit test.
+- A clear pattern name for `manifest.json` findings.
+- No claim of comprehensive secret scanning unless backed by a dedicated scanner.
 
 ## Review Pack
 
-Use this format for meaningful changes:
+Use this summary for meaningful changes:
 
 ```md
 ## Review Pack
-Repo:
+Repo: gitbriefcase
 Branch:
 PR:
 Task:
@@ -59,21 +75,3 @@ Rollback plan:
 Human decision needed:
 Next recommended task:
 ```
-
-## Verification
-
-Every contribution should include verification.
-
-Examples:
-
-- Documentation: inspect rendered Markdown or review the diff.
-- Tests: run the targeted test command.
-- Types: run the project typecheck.
-- Build: run the smallest build command that covers the change.
-- Manual QA: provide exact steps and observed result.
-
-If verification cannot be run, explain why and provide the exact command maintainers should run.
-
-## Maintainer Review
-
-Maintainers may request narrower scope, clearer verification, additional tests, or safer defaults before merging.
