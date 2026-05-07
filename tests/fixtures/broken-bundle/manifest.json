@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "tool": { "name": "gitbriefcase", "version": "0.1.0", "command": "test" },
+  "createdAt": "1970-01-01T00:00:00.000Z",
+  "source": { "rootName": "broken", "git": { "branch": null, "commit": null, "isDirty": null, "status": [] } },
+  "options": { "maxFileBytes": 1, "includeGitIgnored": false },
+  "stats": { "files": 1, "skipped": 0, "redactedFiles": 0, "bytes": 3 },
+  "files": [{ "path": "missing.txt", "bundlePath": "files/missing.txt", "size": 3, "originalSize": 3, "sha256": "bad", "language": "Text", "redacted": false }],
+  "skipped": [],
+  "redactions": [],
+  "warnings": []
+}
