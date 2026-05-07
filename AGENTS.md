@@ -5,10 +5,10 @@ This file defines how AI agents and human maintainers should work in `gitbriefca
 ## Project Context
 
 - Project: `gitbriefcase`
-- Repository: ``
-- Primary maintainer: ``
-- Default branch: ``
-- Package manager: ``
+- Repository: `https://github.com/rogerchappel/gitbriefcase`
+- Primary maintainer: `rogerchappel`
+- Default branch: `main`
+- Package manager: `npm`
 - Primary verification command: `bash scripts/validate.sh`
 
 ## Core Principle
