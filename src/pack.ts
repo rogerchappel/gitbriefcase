@@ -27,10 +27,11 @@ export async function packRepository(options: PackOptions): Promise<PackResult> 
   const workDir = options.format === "tgz" ? bundleBase.replace(/\.tar\.gz$|\.tgz$/u, "") : bundleBase;
 
   if (options.force) await rm(workDir, { recursive: true, force: true });
-  await mkdir(join(workDir, "files"), { recursive: false }).catch((error: NodeJS.ErrnoException) => {
+  await mkdir(workDir, { recursive: false }).catch((error: NodeJS.ErrnoException) => {
     if (error.code === "EEXIST") throw new GitbriefcaseError(`Output already exists: ${workDir}. Use --force to overwrite.`);
     throw error;
   });
+  await mkdir(join(workDir, "files"), { recursive: false });
 
   const walked = await walkRepository(root, { includeGitIgnored: options.includeGitIgnored });
   const skipped: SkippedFile[] = [...walked.skipped];
