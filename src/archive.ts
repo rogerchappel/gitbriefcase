@@ -6,8 +6,9 @@ import { GitbriefcaseError } from "./errors.js";
 
 export async function createTgz(sourceDir: string, outputPath: string): Promise<void> {
   const target = resolve(outputPath);
-  const result = spawnSync("tar", ["--no-xattrs", "-czf", target, "--options", "gzip:!timestamp", "-C", dirname(sourceDir), basename(sourceDir)], {
-    encoding: "utf8"
+  const result = spawnSync("tar", ["--no-xattrs", "-czf", target, "-C", dirname(sourceDir), basename(sourceDir)], {
+    encoding: "utf8",
+    env: { ...process.env, GZIP: "-n" }
   });
   if (result.status !== 0) {
     throw new GitbriefcaseError(`tar failed: ${result.stderr.trim() || result.stdout.trim() || "unknown error"}`);
