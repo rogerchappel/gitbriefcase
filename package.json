@@ -37,6 +37,14 @@
   ],
   "author": "Roger Chappel",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rogerchappel/gitbriefcase.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rogerchappel/gitbriefcase/issues"
+  },
+  "homepage": "https://github.com/rogerchappel/gitbriefcase#readme",
   "engines": {
     "node": ">=20"
   },
