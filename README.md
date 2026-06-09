@@ -113,7 +113,20 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Please keep changes small, tested, and r
 ## Security
 
 See [SECURITY.md](SECURITY.md). Do not publish sensitive bundle contents in public issues.
+## Release readiness
+
+Run the same checks expected before opening or cutting a release:
+
+```sh
+npm run check
+npm run test
+npm run build
+npm run smoke
+npm run package:smoke
+npm run release:check
+```
+
+Use `npm pack --dry-run` to confirm the published package contains the CLI/runtime files plus README, license, security, support, and release notes.
 
 ## License
-
 MIT
