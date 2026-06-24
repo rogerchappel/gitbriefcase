@@ -126,7 +126,7 @@ npm run package:smoke
 npm run release:check
 ```
 
-Use `npm pack --dry-run` to confirm the published package contains the CLI/runtime files plus README, license, security, support, and release notes.
+Use `npm run package:smoke` to rebuild, assert the published CLI/runtime entrypoints exist, and confirm the tarball contains README, license, security, support, and release notes.
 
 ## License
 MIT
