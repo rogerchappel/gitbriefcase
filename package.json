@@ -31,7 +31,8 @@
     "test": "npm run build && node --test dist/**/*.test.js",
     "smoke": "npm run build && bash scripts/smoke.sh",
     "package:smoke": "npm run build && test -f dist/src/cli.js && test -f dist/src/index.js && npm pack --dry-run",
-    "release:check": "npm run check && npm test && npm run build && npm run smoke && npm run package:smoke"
+    "release:check": "npm run check && npm test && npm run build && npm run smoke && npm run package:smoke",
+    "lint": "npm run check"
   },
   "keywords": [
     "git",
